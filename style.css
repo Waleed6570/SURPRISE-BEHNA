@@ -1,0 +1,89 @@
+body {
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Falling emojis */
+.falling-emoji {
+  position: absolute;
+  top: -50px;
+  animation: fall 5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Fireworks canvas */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Main app container */
+#app {
+  position: relative;
+  z-index: 10;
+  max-width: 500px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+  text-align: center;
+}
+
+/* Buttons */
+button {
+  background-color: #ff69b4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1em;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+button:hover {
+  background-color: #ff1493;
+}
+
+/* Input / Text */
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #ffb6c1;
+  font-size: 1em;
+  margin-top: 15px;
+  resize: none;
+}
+h1, h2 {
+  color: #ff1493;
+  font-family: 'Pacifico', cursive;
+}
+
+/* Label under questions */
+.answer-label {
+  color: #888;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
