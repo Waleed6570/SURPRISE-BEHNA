@@ -54,40 +54,39 @@ const pages = [
         <img src="chai.jpg" alt="Chai" style="width:100%;border-radius:15px;" />
         <p>Raat ki chai aur gupshup... ☕✨</p>
       </div>
-      <button onclick="nextPage()">Next Memory 🎁</button>
+      <button onclick="nextPage()">Next Memory ➡</button>
     `
   },
   {
-  type: 'memories',
-  content: `
-    <div style="margin-top: 20px;">
-      <img src="picnic-memory.jpg" alt="Picnic" style="width:100%;border-radius:15px;" />
-      <p>Wo picnic jo humne saath enjoy kiya tha... 🌳🍃</p>
-    </div>
-    <button onclick="nextPage()">Next Memory ➡</button>
-  `
-},
-{
-  type: 'final',
-  content: `
-    <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-    <p class="celebration" style="font-size: 1.1em; line-height: 1.6;">
-      Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
-      Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
-      Aap ke baghair meri family adhoori hai.
-    </p>
+    type: 'memories',
+    content: `
+      <div style="margin-top: 20px;">
+        <img src="picnic-memory.jpg" alt="Picnic" style="width:100%;border-radius:15px;" />
+        <p>Wo picnic jo humne saath enjoy kiya tha... 🌳🍃</p>
+      </div>
+      <button onclick="nextPage()">Next Memory ➡</button>
+    `
+  },
+  {
+    type: 'final',
+    content: `
+      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+      <p class="celebration" style="font-size: 1.1em; line-height: 1.6;">
+        Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
+        Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
+        Aap ke baghair meri family adhoori hai.
+      </p>
 
-    <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
-      <img src="final-memory.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
-    </div>
+      <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
+        <img src="final-memory.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
+      </div>
 
-    <h2 style="margin-top: 30px; font-size: 2em; color: #ff1493;">LOVE YOU BEHNA ❤️</h2>
-    <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-  `
-    <br/>
-    <button onclick="restart()">Watch Again 🔁</button>
-  `
-}
+      <h2 style="margin-top: 30px; font-size: 2em; color: #ff1493;">LOVE YOU BEHNA ❤️</h2>
+      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
+      <br/>
+      <button onclick="restart()">Watch Again 🔁</button>
+    `
+  }
 ];
 
 let currentPage = 0;
@@ -125,6 +124,12 @@ function renderPage() {
   }
 }
 
+function restart() {
+  currentPage = 0;
+  answers = [];
+  renderPage();
+}
+
 // Falling emoji animation
 function createFallingEmoji() {
   const emojiArray = ['🎈', '🌸', '🎉'];
@@ -140,8 +145,9 @@ function createFallingEmoji() {
 window.onload = () => {
   renderPage();
   setInterval(createFallingEmoji, 300);
-  
 };
+
+// SoundCloud autoplay fix
 let musicStarted = false;
 
 function playMusicOnce() {
