@@ -31,7 +31,7 @@ const pages = [
       <h1>✨ Yaadein ✨</h1>
       <p>Yeh woh pal hain jo hamesha mere dil ke kareeb rahenge... ❤</p>
       <div style="margin-top: 20px;">
-        <img src="batain.jpeg" alt="Memory 1" style="width:100%;border-radius:15px;" />
+        <img src="batain.jpg" alt="Memory 1" style="width:100%;border-radius:15px;" />
         <p>Hamari hasi... hamari baatein... 😄</p>
       </div>
       <button onclick="nextPage()">Next Memory ➡</button>
@@ -41,7 +41,7 @@ const pages = [
     type: 'memories',
     content: `
       <div style="margin-top: 20px;">
-        <img src="ludo.jpeg" alt="Memory 2" style="width:100%;border-radius:15px;" />
+        <img src="ludo.jpg" alt="Memory 2" style="width:100%;border-radius:15px;" />
         <p>Ludo ka match... aur aapka naraz hona! 😂🎲</p>
       </div>
       <button onclick="nextPage()">Next Memory ➡</button>
@@ -51,61 +51,71 @@ const pages = [
     type: 'memories',
     content: `
       <div style="margin-top: 20px;">
-        <img src="chai.jpeg" alt="Chai" style="width:100%;border-radius:15px;" />
+        <img src="chai.jpg" alt="Chai" style="width:100%;border-radius:15px;" />
         <p>Raat ki chai aur gupshup... ☕✨</p>
       </div>
       <button onclick="nextPage()">Final Surprise 🎁</button>
     `
   },
   {
-    type: 'final',
-    content: `
-      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-      <p class="celebration">Aap meri zindagi ka sabse pyara hissa hain... 🥹</p>
+  type: 'memories',
+  content: `
+    <div style="margin-top: 20px;">
+      <img src="picnic-memory.jpg" alt="Picnic" style="width:100%;border-radius:15px;" />
+      <p>Wo picnic jo humne saath enjoy kiya tha... 🌳🍃</p>
+    </div>
+    <button onclick="nextPage()">Next Memory ➡</button>
+  `
+}
+ {
+  type: 'final',
+  content: `
+    <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+    <p class="celebration">Aap meri zindagi ka sabse pyara hissa hain... 🥹</p>
 
-      <!-- Final Photo -->
-      <div style="margin: 20px auto;">
-        <img src="final-sister.jpg" alt="Sister Photo" style="width:100%;border-radius:20px;box-shadow:0 0 15px rgba(255,182,193,0.7);" />
-      </div>
+    <!-- Final Photo (landscape style and smaller) -->
+    <div style="margin: 20px auto;">
+      <img src="final-sister.jpg" alt="Sister Photo" style="width: 80%; max-height: 300px; object-fit: cover; border-radius: 12px; box-shadow: 0 0 15px rgba(255,182,193,0.7);" />
+    </div>
 
-      <!-- Heartfelt Message -->
-      <p style="
-        margin: 30px auto 20px;
-        padding: 15px;
-        background: #ffe6f0;
-        border: 2px solid #ff1493;
-        border-radius: 12px;
-        font-size: 1.2em;
-        color: #d81b60;
-        max-width: 90%;
-        font-weight: 600;
-        line-height: 1.4em;
-        white-space: pre-wrap;
-      ">
-        Aap meri zindagi ki sabse khoobsurat gift hain.
-        Main Na Allah Sa Bohat Mang Kar Apko Liya Hai.
-        Meri Allah Sa Dua Hai Hum Hamesha Saath Rahain.
-        Kabhi Aap Mujh Se Naraz Na Ho.
-        Aap Ke Bina Meri Family Incomplete Hai.
-        Happy Sister Day, meri pyari behna!
-      </p>
+    <!-- Heartfelt Message (smaller text) -->
+    <p style="
+      margin: 30px auto 20px;
+      padding: 15px;
+      background: #ffe6f0;
+      border: 2px solid #ff1493;
+      border-radius: 12px;
+      font-size: 1em;
+      color: #d81b60;
+      max-width: 90%;
+      font-weight: 500;
+      line-height: 1.4em;
+      white-space: pre-wrap;
+    ">
+      Aap meri zindagi ki sabse khoobsurat gift hain.
+      Main Na Allah Sa Bohat Mang Kar Apko Liya Hai.
+      Meri Allah Sa Dua Hai Hum Hamesha Saath Rahain.
+      Kabhi Aap Mujh Se Naraz Na Ho.
+      Aap Ke Bina Meri Family Incomplete Hai.
+      Happy Sister Day, meri pyari behna!
+    </p>
 
-      <!-- Love You Message -->
-      <h2 style="
-        margin-top: 40px;
-        color: #ff1493;
-        font-size: 2.8em;
-        font-family: 'Pacifico', cursive;
-        text-shadow: 2px 2px 4px #ffb6c1;
-      ">
-        LOVE YOU BEHNA ❤️
-      </h2>
+    <!-- Love You Message -->
+    <h2 style="
+      margin-top: 30px;
+      color: #ff1493;
+      font-size: 2.2em;
+      font-family: 'Pacifico', cursive;
+      text-shadow: 2px 2px 4px #ffb6c1;
+    ">
+      LOVE YOU BEHNA ❤️
+    </h2>
 
-      <p style="margin-top: 30px; font-weight: bold;">Aapka chhota bhai 💖</p>
-      <br/>
-      <button onclick="restart()">Watch Again 🔁</button>
-    `
-  }
+    <p style="margin-top: 25px; font-weight: bold;">Aapka chhota bhai 💖</p>
+    <br/>
+    <button onclick="restart()">Watch Again 🔁</button>
+  `
+}
 ];
 
 let currentPage = 0;
