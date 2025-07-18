@@ -67,18 +67,19 @@ const pages = [
     <button onclick="nextPage()">Next Memory ➡</button>
   `
 },
- {
+{
   type: 'final',
   content: `
     <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
     <p class="celebration">Aap meri zindagi ka sabse pyara hissa hain... 🥹</p>
 
-    <!-- Final Photo (landscape style and smaller) -->
-    <div style="margin: 20px auto;">
-      <img src="final-sister.jpg" alt="Sister Photo" style="width: 80%; max-height: 300px; object-fit: cover; border-radius: 12px; box-shadow: 0 0 15px rgba(255,182,193,0.7);" />
+    <!-- Final Photo (Now Resized + Landscape Style) -->
+    <div style="margin: 20px auto; text-align:center;">
+      <img src="final-sister.jpg" alt="Sister Photo" 
+        style="max-width: 80%; height: auto; border-radius: 15px; box-shadow: 0 0 15px rgba(255,182,193,0.7);" />
     </div>
 
-    <!-- Heartfelt Message (smaller text) -->
+    <!-- Heartfelt Message (Smaller Size) -->
     <p style="
       margin: 30px auto 20px;
       padding: 15px;
@@ -87,7 +88,7 @@ const pages = [
       border-radius: 12px;
       font-size: 1em;
       color: #d81b60;
-      max-width: 90%;
+      max-width: 85%;
       font-weight: 500;
       line-height: 1.4em;
       white-space: pre-wrap;
