@@ -166,19 +166,43 @@ function playMusicOnce() {
 document.addEventListener('click', playMusicOnce);
 
 // Send answers when finished
-if (currentPage === pages.length) {
-  fetch("https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec", {
-    method: "POST",
+function nextPage() {
+  const page = pages[currentPage];
+  if (page.type === 'question') {
+    const input = document.querySelector('textarea');
+    const val = input.value.trim();
+    if (val === '') {
+      alert('Please answer with ❤ before moving forward!');
+      return;
+    }
+    answers.push(val);
+  }
+
+  currentPage++;
+
+  // If all questions answered, send data
+  if (currentPage === 5) { // after 4 questions
+    sendAnswersToSheet();
+  }
+
+  renderPage();
+}
+
+function sendAnswersToSheet() {
+  fetch('https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec', {
+    method: 'POST',
     body: JSON.stringify({
-      timestamp: new Date().toISOString(),
-      answers: answers
+      q1: answers[0],
+      q2: answers[1],
+      q3: answers[2],
+      q4: answers[3],
     }),
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
-  }).then(res => {
-    console.log("✅ Answers sent!");
-  }).catch(err => {
-    console.error("❌ Error sending answers:", err);
-  });
+  })
+  .then(res => res.text())
+  .then(data => console.log('Response from Google Sheet:', data))
+  .catch(err => console.error('Error!', err));
 }
+
