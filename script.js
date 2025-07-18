@@ -103,7 +103,13 @@ function nextPage() {
     }
     answers.push(val);
   }
+
   currentPage++;
+
+  if (currentPage === pages.length) {
+    submitAnswers();
+  }
+
   renderPage();
 }
 
@@ -147,7 +153,7 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
-// SoundCloud autoplay fix
+// 🔊 Music Play on First Click
 let musicStarted = false;
 
 function playMusicOnce() {
@@ -157,5 +163,22 @@ function playMusicOnce() {
   const src = iframe.getAttribute('src');
   iframe.setAttribute('src', src + '&auto_play=true');
 }
-
 document.addEventListener('click', playMusicOnce);
+
+// ✅ Submit answers to Google Sheet
+function submitAnswers() {
+  const scriptURL = "https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec";
+
+  const payload = new FormData();
+  payload.append("Timestamp", new Date().toISOString());
+  answers.forEach((ans, i) => payload.append(`Question ${i + 1}`, ans));
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: payload
+  }).then(response => {
+    console.log("Answers submitted to Google Sheet");
+  }).catch(error => {
+    console.error("Error submitting answers", error);
+  });
+}
