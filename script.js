@@ -106,8 +106,8 @@ function nextPage() {
 
   currentPage++;
 
-  if (currentPage === 5) { // after 4 questions
-    sendAnswersToSheet();
+  if (currentPage === 5) {
+    sendAnswersToEmail(); // Send after 4 questions
   }
 
   renderPage();
@@ -136,7 +136,7 @@ function restart() {
   renderPage();
 }
 
-// Falling emoji animation
+// FALLING EMOJI
 function createFallingEmoji() {
   const emojiArray = ['🎈', '🌸', '🎉'];
   const emoji = document.createElement('div');
@@ -153,7 +153,7 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
-// Music play on first click
+// 🔊 MUSIC PLAY ON FIRST CLICK
 let musicStarted = false;
 function playMusicOnce() {
   if (musicStarted) return;
@@ -164,27 +164,21 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// Send answers to Google Sheet
-function sendAnswersToSheet() {
-  fetch('https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec', {
+// ✉️ Send to Google Apps Script (Email)
+function sendAnswersToEmail() {
+  fetch('https://script.google.com/macros/s/AKfycbzVTwDF02jBkqEMGveeHd74vUCYxE_XFllJs1lWw2CZAnedzAvArb9WNNj4cHlvcQ1G9g/exec', {
     method: 'POST',
     body: JSON.stringify({
       q1: answers[0],
       q2: answers[1],
       q3: answers[2],
-      q4: answers[3],
+      q4: answers[3]
     }),
     headers: {
       'Content-Type': 'application/json'
     }
   })
   .then(res => res.text())
-  .then(data => {
-    console.log('Response from Google Sheet:', data);
-    alert("❤️ Aapke answers safely save ho gaye!");
-  })
-  .catch(err => {
-    console.error('Error!', err);
-    alert("❌ Error saving your answers. Please try again.");
-  });
+  .then(msg => console.log('✅ Email Sent:', msg))
+  .catch(err => console.error('❌ Error sending email:', err));
 }
