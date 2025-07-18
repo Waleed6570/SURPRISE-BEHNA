@@ -106,8 +106,8 @@ function nextPage() {
 
   currentPage++;
 
-  if (currentPage === pages.length) {
-    submitAnswers();
+  if (currentPage === 5) { // after 4 questions
+    sendAnswersToSheet();
   }
 
   renderPage();
@@ -153,9 +153,8 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
-// 🔊 Music Play on First Click
+// Music play on first click
 let musicStarted = false;
-
 function playMusicOnce() {
   if (musicStarted) return;
   musicStarted = true;
@@ -165,29 +164,7 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// Send answers when finished
-function nextPage() {
-  const page = pages[currentPage];
-  if (page.type === 'question') {
-    const input = document.querySelector('textarea');
-    const val = input.value.trim();
-    if (val === '') {
-      alert('Please answer with ❤ before moving forward!');
-      return;
-    }
-    answers.push(val);
-  }
-
-  currentPage++;
-
-  // If all questions answered, send data
-  if (currentPage === 5) { // after 4 questions
-    sendAnswersToSheet();
-  }
-
-  renderPage();
-}
-
+// Send answers to Google Sheet
 function sendAnswersToSheet() {
   fetch('https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec', {
     method: 'POST',
@@ -202,7 +179,12 @@ function sendAnswersToSheet() {
     }
   })
   .then(res => res.text())
-  .then(data => console.log('Response from Google Sheet:', data))
-  .catch(err => console.error('Error!', err));
+  .then(data => {
+    console.log('Response from Google Sheet:', data);
+    alert("❤️ Aapke answers safely save ho gaye!");
+  })
+  .catch(err => {
+    console.error('Error!', err);
+    alert("❌ Error saving your answers. Please try again.");
+  });
 }
-
