@@ -165,20 +165,20 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// ✅ Submit answers to Google Sheet
-function submitAnswers() {
-  const scriptURL = "https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec";
-
-  const payload = new FormData();
-  payload.append("Timestamp", new Date().toISOString());
-  answers.forEach((ans, i) => payload.append(`Question ${i + 1}`, ans));
-
-  fetch(scriptURL, {
-    method: 'POST',
-    body: payload
-  }).then(response => {
-    console.log("Answers submitted to Google Sheet");
-  }).catch(error => {
-    console.error("Error submitting answers", error);
+// Send answers when finished
+if (currentPage === pages.length) {
+  fetch("https://script.google.com/macros/s/AKfycbw1vLzdRyPcWw7fyJXVfQMwxMiQUrh2aqrmzts7f52ZUTFufXrnX9jcP010n7sfJmca/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      timestamp: new Date().toISOString(),
+      answers: answers
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(res => {
+    console.log("✅ Answers sent!");
+  }).catch(err => {
+    console.error("❌ Error sending answers:", err);
   });
 }
