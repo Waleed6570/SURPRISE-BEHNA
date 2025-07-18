@@ -169,4 +169,16 @@ function createFallingEmoji() {
 window.onload = () => {
   renderPage();
   setInterval(createFallingEmoji, 300);
+  
 };
+let musicStarted = false;
+
+function playMusicOnce() {
+  if (musicStarted) return;
+  musicStarted = true;
+  const iframe = document.getElementById('music');
+  const src = iframe.getAttribute('src');
+  iframe.setAttribute('src', src + '&auto_play=true');
+}
+
+document.addEventListener('click', playMusicOnce);
