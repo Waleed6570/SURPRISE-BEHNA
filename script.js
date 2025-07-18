@@ -68,7 +68,6 @@ const pages = [
   `
 },
 {
-  {
   type: 'final',
   content: `
     <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
