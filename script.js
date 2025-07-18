@@ -54,7 +54,7 @@ const pages = [
         <img src="chai.jpg" alt="Chai" style="width:100%;border-radius:15px;" />
         <p>Raat ki chai aur gupshup... ☕✨</p>
       </div>
-      <button onclick="nextPage()">Final Surprise 🎁</button>
+      <button onclick="nextPage()">Next Memory 🎁</button>
     `
   },
   {
@@ -73,11 +73,23 @@ const pages = [
     <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
     <p class="celebration">Aap meri zindagi ka sabse pyara hissa hain... 🥹</p>
 
-    <!-- Final Photo (Now Resized + Landscape Style) -->
-    <div style="margin: 20px auto; text-align:center;">
-      <img src="final-sister.jpg" alt="Sister Photo" 
-        style="max-width: 80%; height: auto; border-radius: 15px; box-shadow: 0 0 15px rgba(255,182,193,0.7);" />
-    </div>
+    <!-- Final Photo -->
+<div style="margin: 20px auto;">
+  <img 
+    src="final-sister.jpg" 
+    alt="Sister Photo" 
+    style="
+      width: 90%;
+      max-height: 60vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,182,193,0.5);
+    " 
+  />
+</div>
+
 
     <!-- Heartfelt Message (Smaller Size) -->
     <p style="
