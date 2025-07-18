@@ -78,7 +78,7 @@ const pages = [
       </p>
 
       <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
-        <img src="final-memory.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
+        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
       </div>
 
       <h2 style="margin-top: 30px; font-size: 2em; color: #ff1493;">LOVE YOU BEHNA ❤️</h2>
