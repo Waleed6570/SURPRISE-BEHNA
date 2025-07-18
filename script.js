@@ -73,19 +73,18 @@ const pages = [
     <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
     <p class="celebration">Aap meri zindagi ka sabse pyara hissa hain... 🥹</p>
 
-    <!-- Final Photo -->
-<div style="margin: 20px auto;">
+<!-- Final Photo (Portrait Style) -->
+<div style="margin: 20px auto; max-width: 100%; text-align: center;">
   <img 
     src="final-sister.jpg" 
     alt="Sister Photo" 
     style="
-      width: 90%;
-      max-height: 60vh;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255,182,193,0.5);
+      width: auto;
+      height: 450px;
+      max-height: 80vh;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,182,193,0.7);
+      object-fit: cover;
     " 
   />
 </div>
