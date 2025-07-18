@@ -66,7 +66,7 @@ const pages = [
     </div>
     <button onclick="nextPage()">Next Memory ➡</button>
   `
-}
+},
  {
   type: 'final',
   content: `
