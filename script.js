@@ -136,7 +136,7 @@ function restart() {
   renderPage();
 }
 
-// FALLING EMOJI
+// 🎈 FALLING EMOJIS
 function createFallingEmoji() {
   const emojiArray = ['🎈', '🌸', '🎉'];
   const emoji = document.createElement('div');
@@ -153,7 +153,7 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
-// 🔊 MUSIC PLAY ON FIRST CLICK
+// 🔊 MUSIC: Play only once on first user click
 let musicStarted = false;
 function playMusicOnce() {
   if (musicStarted) return;
@@ -164,7 +164,7 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// ✉️ Send answers via Google Apps Script to email
+// ✉️ EMAIL: Send answers via Google Apps Script Web App
 function sendAnswersToEmail() {
   fetch('https://script.google.com/macros/s/AKfycbxJG-U-7STuFlOGiWuQ728N5DJrErqXrTvq8II2-zEsTw-aBumUy5jGl3RDM2bGGVdWoQ/exec', {
     method: 'POST',
@@ -182,6 +182,3 @@ function sendAnswersToEmail() {
   .then(msg => console.log('✅ Email Sent:', msg))
   .catch(err => console.error('❌ Error sending email:', err));
 }
-
-}
-
