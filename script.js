@@ -166,28 +166,22 @@ document.addEventListener('click', playMusicOnce);
 
 // ✉️ Send answers via Google Apps Script to email
 function sendAnswersToEmail() {
-  const endpoint = 'https://script.google.com/macros/s/AKfycbzVTwDF02jBkqEMGveeHd74vUCYxE_XFllJs1lWw2CZAnedzAvArb9WNNj4cHlvcQ1G9g/exec';
-
-  const payload = {
-    q1: answers[0] || '',
-    q2: answers[1] || '',
-    q3: answers[2] || '',
-    q4: answers[3] || ''
-  };
-
-  fetch(endpoint, {
+  fetch('https://script.google.com/macros/s/AKfycbxJG-U-7STuFlOGiWuQ728N5DJrErqXrTvq8II2-zEsTw-aBumUy5jGl3RDM2bGGVdWoQ/exec', {
     method: 'POST',
+    body: JSON.stringify({
+      q1: answers[0],
+      q2: answers[1],
+      q3: answers[2],
+      q4: answers[3]
+    }),
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
+    }
   })
-  .then(response => response.text())
-  .then(message => {
-    console.log('✅ Email sent successfully:', message);
-  })
-  .catch(error => {
-    console.error('❌ Failed to send email:', error);
-  });
+  .then(res => res.text())
+  .then(msg => console.log('✅ Email Sent:', msg))
+  .catch(err => console.error('❌ Error sending email:', err));
+}
+
 }
 
