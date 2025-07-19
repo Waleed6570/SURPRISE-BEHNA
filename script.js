@@ -164,21 +164,30 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// ✉️ Send to Google Apps Script (Email)
+// ✉️ Send answers via Google Apps Script to email
 function sendAnswersToEmail() {
-  fetch('https://script.google.com/macros/s/AKfycbzVTwDF02jBkqEMGveeHd74vUCYxE_XFllJs1lWw2CZAnedzAvArb9WNNj4cHlvcQ1G9g/exec', {
+  const endpoint = 'https://script.google.com/macros/s/AKfycbzVTwDF02jBkqEMGveeHd74vUCYxE_XFllJs1lWw2CZAnedzAvArb9WNNj4cHlvcQ1G9g/exec';
+
+  const payload = {
+    q1: answers[0] || '',
+    q2: answers[1] || '',
+    q3: answers[2] || '',
+    q4: answers[3] || ''
+  };
+
+  fetch(endpoint, {
     method: 'POST',
-    body: JSON.stringify({
-      q1: answers[0],
-      q2: answers[1],
-      q3: answers[2],
-      q4: answers[3]
-    }),
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify(payload)
   })
-  .then(res => res.text())
-  .then(msg => console.log('✅ Email Sent:', msg))
-  .catch(err => console.error('❌ Error sending email:', err));
+  .then(response => response.text())
+  .then(message => {
+    console.log('✅ Email sent successfully:', message);
+  })
+  .catch(error => {
+    console.error('❌ Failed to send email:', error);
+  });
 }
+
