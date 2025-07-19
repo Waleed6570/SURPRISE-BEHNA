@@ -164,9 +164,9 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// ✉️ EMAIL: Send answers via Google Apps Script Web App
+// ✉️ Send answers via Google Apps Script to email
 function sendAnswersToEmail() {
-  fetch('https://script.google.com/macros/s/AKfycbxJG-U-7STuFlOGiWuQ728N5DJrErqXrTvq8II2-zEsTw-aBumUy5jGl3RDM2bGGVdWoQ/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbwcfnUeM15pDni0IP_dxy8tQfLs4ohC1pLqeygCIbY8Vs1_QSaK-ZYSEk21v60GMS64_g/exec', {
     method: 'POST',
     body: JSON.stringify({
       q1: answers[0],
@@ -182,3 +182,4 @@ function sendAnswersToEmail() {
   .then(msg => console.log('✅ Email Sent:', msg))
   .catch(err => console.error('❌ Error sending email:', err));
 }
+
