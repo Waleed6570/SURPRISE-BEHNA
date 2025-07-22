@@ -164,22 +164,20 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-// ✉️ Send answers via Google Apps Script to email
 function sendAnswersToEmail() {
-  fetch('https://script.google.com/macros/s/AKfycbwcfnUeM15pDni0IP_dxy8tQfLs4ohC1pLqeygCIbY8Vs1_QSaK-ZYSEk21v60GMS64_g/exec', {
+  const formData = new FormData();
+  formData.append('q1', answers[0]);
+  formData.append('q2', answers[1]);
+  formData.append('q3', answers[2]);
+  formData.append('q4', answers[3]);
+
+  fetch("https://sister-day-email.waleedchsultan5.repl.co/form-handler.php", {
     method: 'POST',
-    body: JSON.stringify({
-      q1: answers[0],
-      q2: answers[1],
-      q3: answers[2],
-      q4: answers[3]
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    body: formData
   })
   .then(res => res.text())
-  .then(msg => console.log('✅ Email Sent:', msg))
-  .catch(err => console.error('❌ Error sending email:', err));
+  .then(msg => console.log("✅ Sent:", msg))
+  .catch(err => console.error("❌ Error:", err));
 }
+
 
