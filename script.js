@@ -106,10 +106,18 @@ function nextPage() {
 
   currentPage++;
 
-  if (currentPage === 5) {
-    sendAnswersToEmail(); // Send after 4 questions
+ if (currentPage === 5) {
+  const inputs = document.querySelectorAll('textarea');
+  const answers = Array.from(inputs).map(input => input.value.trim());
+
+  if (answers.some(ans => ans === '')) {
+    alert("⚠ Please answer all questions before submitting.");
+    return;
   }
 
+  sendAnswersToEmail(answers); // ✅ Correctly send answers as array
+  return;
+}
   renderPage();
 }
 
