@@ -165,19 +165,21 @@ function playMusicOnce() {
 document.addEventListener('click', playMusicOnce);
 
 function sendAnswersToEmail() {
-  const formData = new FormData();
-  formData.append('q1', answers[0]);
-  formData.append('q2', answers[1]);
-  formData.append('q3', answers[2]);
-  formData.append('q4', answers[3]);
-
-  fetch("https://sister-day-email.waleedchsultan5.repl.co/form-handler.php", {
+  fetch('https://sister-day-email.waleedchsultan5.repl.co/form-handler.php', {
     method: 'POST',
-    body: formData
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      q1: answers[0],
+      q2: answers[1],
+      q3: answers[2],
+      q4: answers[3]
+    })
   })
   .then(res => res.text())
-  .then(msg => console.log("✅ Sent:", msg))
-  .catch(err => console.error("❌ Error:", err));
+  .then(msg => console.log('✅ Email Sent:', msg))
+  .catch(err => console.error('❌ Error sending email:', err));
 }
 
 
