@@ -164,11 +164,11 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-function sendAnswersToEmail() {
-  fetch('https://sister-day-backend.replit.app/form-handler.php', {
-    method: 'POST',
+function sendAnswersToEmail(answers) {
+  fetch("https://fed0e65f-8d43-4787-995d-1c76c822d31b-00-23cykt7p16kw.sisko.replit.dev/form-handler.php", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded"
     },
     body: new URLSearchParams({
       q1: answers[0],
@@ -177,9 +177,15 @@ function sendAnswersToEmail() {
       q4: answers[3]
     })
   })
-  .then(res => res.text())
-  .then(msg => console.log('✅ Email Sent:', msg))
-  .catch(err => console.error('❌ Error sending email:', err));
+  .then(response => response.text())
+  .then(data => {
+    console.log("✅ Server response:", data);
+    alert("✅ Your answers have been submitted!");
+  })
+  .catch(error => {
+    console.error("❌ Error sending email:", error);
+    alert("❌ Something went wrong. Please try again.");
+  });
 }
 
 
