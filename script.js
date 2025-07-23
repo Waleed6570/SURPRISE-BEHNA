@@ -165,7 +165,7 @@ function playMusicOnce() {
 document.addEventListener('click', playMusicOnce);
 
 function sendAnswersToEmail() {
-  fetch('https://sister-day-email.waleedchsultan5.repl.co/form-handler.php', {
+  fetch('https://sister-day-backend.replit.app/form-handler.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
