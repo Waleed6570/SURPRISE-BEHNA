@@ -183,10 +183,8 @@ function sendAnswersToEmail(answers) {
   .then(res => res.text())
   .then(data => {
     console.log("✅ Response from PHP:", data);
-    alert("✅ Answers saved successfully!");
   })
   .catch(error => {
     console.error("❌ Error sending answers:", error);
-    alert("❌ Failed to send answers. Try again later.");
   });
 }
