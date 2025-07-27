@@ -173,12 +173,18 @@ function playMusicOnce() {
 document.addEventListener('click', playMusicOnce);
 
 function sendAnswersToEmail(answers) {
+  const formData = new URLSearchParams();
+  formData.append("q1", answers[0]);
+  formData.append("q2", answers[1]);
+  formData.append("q3", answers[2]);
+  formData.append("q4", answers[3]);
+
   fetch("https://fed0e65f-8d43-4787-995d-1c76c822d31b-00-23cykt7p116kw.sisko.replit.dev/save-answers.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: q1=${encodeURIComponent(answers[0])}&q2=${encodeURIComponent(answers[1])}&q3=${encodeURIComponent(answers[2])}&q4=${encodeURIComponent(answers[3])}
+    body: formData.toString()
   })
   .then(res => res.text())
   .then(data => {
@@ -186,5 +192,7 @@ function sendAnswersToEmail(answers) {
   })
   .catch(error => {
     console.error("❌ Error sending answers:", error);
+  });
+}error);
   });
 }
