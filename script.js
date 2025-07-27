@@ -173,18 +173,20 @@ function playMusicOnce() {
 document.addEventListener('click', playMusicOnce);
 
 function sendAnswersToEmail(answers) {
-fetch("https://fed0e65f-8d43-4787-995d-1c76c822d31b-00-23cykt7p116kw.sisko.replit.dev/form-handler.php", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: q1=${answers[0]}&q2=${answers[1]}&q3=${answers[2]}&q4=${answers[3]}
-})
-.then(res => res.text())
-.then(data => {
-  console.log("✅ Response from PHP:", data);
-})
-.catch(error => {
-  console.error("❌ Error sending email:", error);
-});
-
+  fetch("https://fed0e65f-8d43-4787-995d-1c76c822d31b-00-23cykt7p116kw.sisko.replit.dev/save-answers.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: q1=${encodeURIComponent(answers[0])}&q2=${encodeURIComponent(answers[1])}&q3=${encodeURIComponent(answers[2])}&q4=${encodeURIComponent(answers[3])}
+  })
+  .then(res => res.text())
+  .then(data => {
+    console.log("✅ Response from PHP:", data);
+    alert("✅ Answers saved successfully!");
+  })
+  .catch(error => {
+    console.error("❌ Error sending answers:", error);
+    alert("❌ Failed to send answers. Try again later.");
+  });
+}
