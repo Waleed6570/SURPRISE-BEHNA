@@ -179,7 +179,7 @@ function sendAnswersToEmail(answers) {
   formData.append("q3", answers[2]);
   formData.append("q4", answers[3]);
 
-  fetch("https://fed0e65f-8d43-4787-995d-1c76c822d31b-00-23cykt7p116kw.sisko.replit.dev/save-answers.php", {
+  fetch("https://51c84733-80cf-45c5-a16b-97bfcf657428-00-3u6nbk7e6buq0.sisko.replit.dev/save-answers.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -189,7 +189,10 @@ function sendAnswersToEmail(answers) {
   .then(res => res.text())
   .then(data => {
     console.log("✅ Response from PHP:", data);
+    alert("🎉 Aapka jawab save ho gaya! Shukriya Behna ❤");
   })
   .catch(error => {
     console.error("❌ Error sending answers:", error);
+    alert("❌ Error: Aapka jawab save nahi ho paya. Dobara try karein.");
   });
+}
