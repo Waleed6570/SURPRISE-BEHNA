@@ -172,27 +172,3 @@ function playMusicOnce() {
 }
 document.addEventListener('click', playMusicOnce);
 
-function sendAnswersToEmail(answers) {
-  const formData = new URLSearchParams();
-  formData.append("q1", answers[0]);
-  formData.append("q2", answers[1]);
-  formData.append("q3", answers[2]);
-  formData.append("q4", answers[3]);
-
-  fetch("https://51c84733-80cf-45c5-a16b-97bfcf657428-00-3u6nbk7e6buq0.sisko.replit.dev/save-answers.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: formData.toString()
-  })
-  .then(res => res.text())
-  .then(data => {
-    console.log("✅ Response from PHP:", data);
-    alert("🎉 Aapka jawab save ho gaya! Shukriya Behna ❤");
-  })
-  .catch(error => {
-    console.error("❌ Error sending answers:", error);
-    alert("❌ Error: Aapka jawab save nahi ho paya. Dobara try karein.");
-  });
-}
