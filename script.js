@@ -193,6 +193,4 @@ function sendAnswersToEmail(answers) {
   .catch(error => {
     console.error("❌ Error sending answers:", error);
   });
-}error);
-  });
 }
