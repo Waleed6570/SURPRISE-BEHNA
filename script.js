@@ -276,7 +276,7 @@ const code = mapToAlphabetCode(codeAnswers);
 
   {
   type: 'final',
-  content: `
+  content `
     <div id="gift-scene">
       <h1 style="font-size: 2.5em;">🎁 Tap to Open Your Surprise!</h1>
       <img src="giftbox.png" alt="Gift Box" id="gift-box" />
