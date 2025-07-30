@@ -219,6 +219,15 @@ function renderPage() {
 
   if (page.type === 'welcome' || page.type === 'memories') {
     app.innerHTML = page.content;
+    if (page.type === 'final') {
+  const giftBox = document.getElementById('gift-box');
+  if (giftBox) {
+    giftBox.addEventListener('click', () => {
+      document.getElementById('gift-scene').style.display = 'none';
+      document.getElementById('final-message').style.display = 'block';
+    });
+  }
+}
   } else if (page.type === 'question') {
     app.innerHTML = `
       <h2>${page.question}</h2>
