@@ -112,3 +112,16 @@ input[type="radio"] {
   margin-right: 8px;
   accent-color: #ff69b4;
 }
+.message-box {
+  background: #fff0f5;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1rem;
+  color: #444;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
+  line-height: 1.6;
+  text-align: center;
+}
