@@ -154,3 +154,12 @@ input[type="radio"] {
   font-family: 'Pacifico', cursive;
   color: #ff1493;
 }
+#gift-box {
+  width: 60%;
+  max-width: 300px;
+  margin-top: 20px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
