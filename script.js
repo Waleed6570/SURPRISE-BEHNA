@@ -239,7 +239,32 @@ function renderPage() {
       <button onclick="nextPage()">Next ➡</button>
     `;
   } else if (page.type === 'final') {
-    const code = codeAnswers.reduce((a, b) => a + b, 0);
+   function mapToAlphabetCode(answers) {
+  const index = ((answers[0] - 1) * 27) + ((answers[1] - 1) * 9) + ((answers[2] - 1) * 3) + (answers[3] - 1);
+  const codeList = generateCodeList();
+  return codeList[index] || '??';
+}
+
+function generateCodeList() {
+  const list = [];
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      for (let k = 0; k < 3; k++) {
+        for (let l = 0; l < 3; l++) {
+          const idx = list.length;
+          const first = letters[Math.floor(idx / 26)];
+          const second = letters[idx % 26];
+          list.push(first + second);
+        }
+      }
+    }
+  }
+  return list;
+}
+
+const code = mapToAlphabetCode(codeAnswers);
+
     app.innerHTML = `
       <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
       <p class="celebration" style="font-size: 1.1em; line-height: 1.6;">
