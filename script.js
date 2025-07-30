@@ -35,14 +35,14 @@ const pages = [
     options: [
       { text: "Har waqt bakbak karta rehta hoon", value: 1 },
       { text: "Har baat mein drama", value: 2 },
-      { text: "Kabhi kabhi apna dard chhupa leta hoon 💔", value: 3 }
+      { text: "Jaldi Emotional Ho Jata Hon 💔", value: 3 }
     ]
   },
   {
     type: 'choice',
     question: "Q4: Aapko mere mein sabse achhi baat kya lagti hai?",
     options: [
-      { text: "Hamesha sath deta hoon", value: 1 },
+      { text: "Apko BEHNA Kahta Hon", value: 1 },
       { text: "Mujhe hassata hoon", value: 2 },
       { text: "Dil ka saaf hoon ❤️", value: 3 }
     ]
