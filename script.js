@@ -265,23 +265,28 @@ function generateCodeList() {
 
 const code = mapToAlphabetCode(codeAnswers);
 
-    app.innerHTML = `
-      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-      <p class="celebration" style="font-size: 1.1em; line-height: 1.6;">
+   {
+  type: 'final',
+  content: `
+    <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+    <div class="message-box">
+      <p>
         Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
         Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
         Aap ke baghair meri family adhoori hai.
       </p>
-      <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
-        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
-      </div>
-      <h2 style="margin-top: 30px; font-size: 2em; color: #ff1493;">LOVE YOU BEHNA ❤️</h2>
-      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-      <p style="margin-top: 20px; font-size: 1.1em;">Your surprise code: <strong>${code}</strong></p>
-      <br/>
-      <button onclick="restart()">Watch Again 🔁</button>
-    `;
-  }
+    </div>
+
+    <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
+      <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
+    </div>
+
+    <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
+    <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
+    <br/>
+    <button onclick="restart()">Watch Again 🔁</button>
+  `
+}
 }
 
 function restart() {
