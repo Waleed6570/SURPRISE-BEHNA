@@ -265,26 +265,33 @@ function generateCodeList() {
 
 const code = mapToAlphabetCode(codeAnswers);
 
-   {
+  {
   type: 'final',
   content: `
-    <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-    <div class="message-box">
-      <p>
-        Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
-        Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
-        Aap ke baghair meri family adhoori hai.
-      </p>
+    <div id="gift-scene">
+      <h1 style="font-size: 2.5em;">🎁 Tap to Open Your Surprise!</h1>
+      <img src="giftbox.png" alt="Gift Box" id="gift-box" />
     </div>
 
-    <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
-      <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
-    </div>
+    <div id="final-message" style="display: none;">
+      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+      <div class="message-box">
+        <p>
+          Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
+          Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
+          Aap ke baghair meri family adhoori hai.
+        </p>
+      </div>
 
-    <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
-    <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-    <br/>
-    <button onclick="restart()">Watch Again 🔁</button>
+      <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
+        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
+      </div>
+
+      <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
+      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
+      <br/>
+      <button onclick="restart()">Watch Again 🔁</button>
+    </div>
   `
 }
 }
