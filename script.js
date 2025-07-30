@@ -48,23 +48,6 @@ const pages = [
     ]
   },
 
-  // 📝 TEXT-BASED QUESTIONS
-  {
-    type: 'question',
-    question: "🌸 Aapko mujh mein sabse achi baat kya lagti hai?"
-  },
-  {
-    type: 'question',
-    question: "💭 Aapki koi ek yaad mere saath jo aap kabhi nahi bhoolengi?"
-  },
-  {
-    type: 'question',
-    question: "😄 Agar aap mujhe koi pyaara sa nickname dena chahein, to kya hoga?"
-  },
-  {
-    type: 'question',
-    question: "🤝 Kya aapko mujh par pura bharosa hai? Agar haan, to kyun?"
-  },
 
   // 📷 MEMORIES
   {
