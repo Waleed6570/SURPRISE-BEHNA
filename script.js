@@ -9,22 +9,64 @@ const pages = [
       <button onclick="nextPage()">Next ➡</button>
     `
   },
+
+  // 🌟 ORIGINAL CHOICE-BASED QUESTIONS
+  {
+    type: 'choice',
+    question: "Q1: Kya aapko mujh par trust hai?",
+    options: [
+      { text: "Hamesha se tha ❤️", value: 1 },
+      { text: "Thoda kam ho gaya hai", value: 2 },
+      { text: "Khud se bhi zyada hai ❤️‍🔥", value: 3 }
+    ]
+  },
+  {
+    type: 'choice',
+    question: "Q2: Agar main superhero hota, to kaunsa hota?",
+    options: [
+      { text: "Fauji", value: 1 },
+      { text: "Aap hamesha se mera superhero ho", value: 2 },
+      { text: "Dramebaaz Man", value: 3 }
+    ]
+  },
+  {
+    type: 'choice',
+    question: "Q3: Aapko mere mein sabse ajeeb ya annoying baat kya lagti hai?",
+    options: [
+      { text: "Har waqt bakbak karta rehta hoon", value: 1 },
+      { text: "Har baat mein drama", value: 2 },
+      { text: "Kabhi kabhi apna dard chhupa leta hoon 💔", value: 3 }
+    ]
+  },
+  {
+    type: 'choice',
+    question: "Q4: Aapko mere mein sabse achhi baat kya lagti hai?",
+    options: [
+      { text: "Hamesha sath deta hoon", value: 1 },
+      { text: "Mujhe hassata hoon", value: 2 },
+      { text: "Dil ka saaf hoon ❤️", value: 3 }
+    ]
+  },
+
+  // 📝 TEXT-BASED QUESTIONS
   {
     type: 'question',
-    question: "🌸 Aapko mujh mein sabse achi baat kya lagti hai?",
+    question: "🌸 Aapko mujh mein sabse achi baat kya lagti hai?"
   },
   {
     type: 'question',
-    question: "💭 Aapki koi ek yaad mere saath jo aap kabhi nahi bhoolengi?",
+    question: "💭 Aapki koi ek yaad mere saath jo aap kabhi nahi bhoolengi?"
   },
   {
     type: 'question',
-    question: "😄 Agar aap mujhe koi pyaara sa nickname dena chahein, to kya hoga?",
+    question: "😄 Agar aap mujhe koi pyaara sa nickname dena chahein, to kya hoga?"
   },
   {
     type: 'question',
-    question: "🤝 Kya aapko mujh par pura bharosa hai? Agar haan, to kyun?",
+    question: "🤝 Kya aapko mujh par pura bharosa hai? Agar haan, to kyun?"
   },
+
+  // 📷 MEMORIES
   {
     type: 'memories',
     content: `
@@ -67,33 +109,21 @@ const pages = [
       <button onclick="nextPage()">Next Memory ➡</button>
     `
   },
+
+  // 🎉 FINAL PAGE
   {
     type: 'final',
-    content: `
-      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-      <p class="celebration" style="font-size: 1.1em; line-height: 1.6;">
-        Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
-        Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
-        Aap ke baghair meri family adhoori hai.
-      </p>
-
-      <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
-        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
-      </div>
-
-      <h2 style="margin-top: 30px; font-size: 2em; color: #ff1493;">LOVE YOU BEHNA ❤️</h2>
-      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-      <br/>
-      <button onclick="restart()">Watch Again 🔁</button>
-    `
+    content: '' // content will be built dynamically
   }
 ];
 
 let currentPage = 0;
 let answers = [];
+let codeAnswers = [];
 
 function nextPage() {
   const page = pages[currentPage];
+
   if (page.type === 'question') {
     const input = document.querySelector('textarea');
     const val = input.value.trim();
@@ -104,11 +134,24 @@ function nextPage() {
     answers.push(val);
   }
 
+  if (page.type === 'choice') {
+    const selected = document.querySelector('input[name="choice"]:checked');
+    if (!selected) {
+      alert('Please select an option 💖');
+      return;
+    }
+    codeAnswers.push(parseInt(selected.value));
+  }
+
+  currentPage++;
+  renderPage();
+}
+
 function renderPage() {
   const page = pages[currentPage];
   if (!page) return;
 
-  if (page.type === 'welcome' || page.type === 'memories' || page.type === 'final') {
+  if (page.type === 'welcome' || page.type === 'memories') {
     app.innerHTML = page.content;
   } else if (page.type === 'question') {
     app.innerHTML = `
@@ -118,16 +161,45 @@ function renderPage() {
       <br />
       <button onclick="nextPage()">Next ➡</button>
     `;
+  } else if (page.type === 'choice') {
+    app.innerHTML = `
+      <h2>${page.question}</h2>
+      <div class="answer-label">ANSWER WITH ❤</div>
+      ${page.options.map(opt => `
+        <label style="display:block; margin: 10px 0;">
+          <input type="radio" name="choice" value="${opt.value}" /> ${opt.text}
+        </label>
+      `).join('')}
+      <button onclick="nextPage()">Next ➡</button>
+    `;
+  } else if (page.type === 'final') {
+    const code = codeAnswers.reduce((a, b) => a + b, 0);
+    app.innerHTML = `
+      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+      <p class="celebration" style="font-size: 1.1em; line-height: 1.6;">
+        Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
+        Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
+        Aap ke baghair meri family adhoori hai.
+      </p>
+      <div style="margin: 30px auto; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
+        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: 100%; object-fit: contain;" />
+      </div>
+      <h2 style="margin-top: 30px; font-size: 2em; color: #ff1493;">LOVE YOU BEHNA ❤️</h2>
+      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
+      <p style="margin-top: 20px; font-size: 1.1em;">Your surprise code: <strong>${code}</strong></p>
+      <br/>
+      <button onclick="restart()">Watch Again 🔁</button>
+    `;
   }
 }
 
 function restart() {
   currentPage = 0;
   answers = [];
+  codeAnswers = [];
   renderPage();
 }
 
-// 🎈 FALLING EMOJIS
 function createFallingEmoji() {
   const emojiArray = ['🎈', '🌸', '🎉'];
   const emoji = document.createElement('div');
@@ -144,7 +216,6 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
-// 🔊 MUSIC: Play only once on first user click
 let musicStarted = false;
 function playMusicOnce() {
   if (musicStarted) return;
@@ -153,3 +224,4 @@ function playMusicOnce() {
   const src = iframe.getAttribute('src');
   iframe.setAttribute('src', src + '&auto_play=true');
 }
+document.addEventListener('click', playMusicOnce);
