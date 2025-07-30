@@ -198,7 +198,7 @@ function nextPage() {
       return;
     }
     answers.push(val);
-  }iu
+  }
 
   if (page.type === 'choice') {
     const selected = document.querySelector('input[name="choice"]:checked');
