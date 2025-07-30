@@ -153,5 +153,3 @@ function playMusicOnce() {
   const src = iframe.getAttribute('src');
   iframe.setAttribute('src', src + '&auto_play=true');
 }
-document.addEventListener('click', playMusicOnce);
-
