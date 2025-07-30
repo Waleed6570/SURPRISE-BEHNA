@@ -104,23 +104,6 @@ function nextPage() {
     answers.push(val);
   }
 
-  currentPage++;
-
- if (currentPage === 5) {
-  const inputs = document.querySelectorAll('textarea');
-  const answers = Array.from(inputs).map(input => input.value.trim());
-
-  if (answers.some(ans => ans === '')) {
-    alert("⚠ Please answer all questions before submitting.");
-    return;
-  }
-
-  sendAnswersToEmail(answers); // ✅ Correctly send answers as array
-  return;
-}
-  renderPage();
-}
-
 function renderPage() {
   const page = pages[currentPage];
   if (!page) return;
