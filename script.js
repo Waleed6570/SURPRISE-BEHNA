@@ -176,11 +176,13 @@ function renderPage() {
     `;
   } else if (page.type === 'final') {
     const code = mapToAlphabetCode(codeAnswers);
-    app.innerHTML = `
-      <div id="gift-scene">
-        <h1 style="font-size: 2.5em;">🎁 Tap to Open Your Surprise!</h1>
-        <img src="giftbox.png" alt="Gift Box" id="gift-box" style="cursor:pointer; width: 180px;" />
-      </div>
+   app.innerHTML = `
+  <div id="gift-scene">
+    <h1>🎁 Tap to Open Your Surprise!</h1>
+    <img src="https://i.imgur.com/8GQmH1S.png" alt="Gift Box" id="gift-box" />
+  </div>
+`;
+
 
       <div id="final-message" style="display: none;">
         <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
