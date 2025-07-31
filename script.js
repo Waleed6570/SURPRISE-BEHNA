@@ -214,7 +214,7 @@ function renderPage() {
 
         <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
         <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-        <p style="margin-top: 20px; font-size: 1.1em;">Secret Code: <strong>${code}</strong></p>
+        <p style="margin-top: 20px; font-size: 1.1em;">DESTINY💖: <strong>${code}</strong></p>
         <br/>
         <button onclick="restart()">Watch Again 🔁</button>
       </div>
