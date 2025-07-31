@@ -174,43 +174,41 @@ function renderPage() {
       `).join('')}
       <button onclick="nextPage()">Next ➡</button>
     `;
-  } else if (page.type === 'final') {
-    const code = mapToAlphabetCode(codeAnswers);
-   app.innerHTML = `
-  <div id="gift-scene">
-    <h1>🎁 Tap to Open Your Surprise!</h1>
-    <img src="https://i.imgur.com/8GQmH1S.png" alt="Gift Box" id="gift-box" />
-  </div>
-`;
+} else if (page.type === 'final') {
+  const code = mapToAlphabetCode(codeAnswers);
+  app.innerHTML = `
+    <div id="gift-scene">
+      <h1 style="font-size: 2em;">🎁 Tap to Open Your Surprise!</h1>
+      <img src="giftbox.png" alt="Gift Box" id="gift-box" />
+    </div>
 
-
-      <div id="final-message" style="display: none;">
-        <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-        <div class="message-box">
-          <p>
-            Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
-            Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho. 
-            Aap ke baghair meri family adhoori hai.
-          </p>
-        </div>
-
-        <div style="margin: 30px auto; width: 100%; max-width: 100%; background: #f9f9f9; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,182,193,0.6);">
-          <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; height: auto; object-fit: cover;" />
-        </div>
-
-        <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
-        <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-        <p style="font-size: 1.2em; margin-top: 20px;">Your surprise code: <strong>${code}</strong></p>
-        <br/>
-        <button onclick="restart()">Watch Again 🔁</button>
+    <div id="final-message" style="display: none;">
+      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+      <div class="message-box">
+        <p>
+          Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
+          Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho.  
+          Aap ke baghair meri family adhoori hai.
+        </p>
       </div>
-    `;
 
-    const giftBox = document.getElementById('gift-box');
-    if (giftBox) {
-      giftBox.addEventListener('click', () => {
-        document.getElementById('gift-scene').style.display = 'none';
-        document.getElementById('final-message').style.display = 'block';
+      <div style="margin: 30px auto; width: 100%; max-width: 640px;">
+        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; border-radius: 15px;" />
+      </div>
+
+      <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
+      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
+      <p style="margin-top: 20px; font-size: 1.1em;">Secret Code: <strong>${code}</strong></p>
+      <br/>
+      <button onclick="restart()">Watch Again 🔁</button>
+    </div>
+  `;
+
+  // Add click listener to gift box
+  const giftBox = document.getElementById('gift-box');
+  giftBox.addEventListener('click', () => {
+    document.getElementById('gift-scene').style.display = 'none';
+    document.getElementById('final-message').style.display = 'block';
       });
     }
   }
