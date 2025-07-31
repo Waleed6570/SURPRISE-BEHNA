@@ -209,6 +209,7 @@ function renderPage() {
   giftBox.addEventListener('click', () => {
     document.getElementById('gift-scene').style.display = 'none';
     document.getElementById('final-message').style.display = 'block';
+    document.getElementById('gift-sound').play();
       });
     }
   }
