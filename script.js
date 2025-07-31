@@ -213,7 +213,6 @@ function renderPage() {
       });
     }
   }
-}
 
 function restart() {
   currentPage = 0;
