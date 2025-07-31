@@ -8,36 +8,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Hidden SoundCloud player for background music -->
-  
-<iframe 
-  id="music"
-  width="0" 
-  height="0" 
-  allow="autoplay" 
-  style="display: none;"
-  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/waleed-sultan-697301353/blessing-of-sistermp3&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
-</iframe>
+  <!-- 🌸 Background Music -->
+  <iframe 
+    id="music"
+    width="0" 
+    height="0" 
+    allow="autoplay" 
+    style="display: none;"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/waleed-sultan-697301353/blessing-of-sistermp3&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
+  </iframe>
 
-  <!-- Falling emojis and fireworks container -->
+  <!-- 🎵 Gift Box Music (Second Song) -->
+  <iframe 
+    id="music-player"
+    width="0" 
+    height="0" 
+    allow="autoplay"
+    style="display: none;"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/wandinhononato-music/die-with-a-smile-piano&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
+  </iframe>
+
+  <!-- 🎈 Falling Emojis and Fireworks -->
   <div class="falling-balloons" id="falling-balloons"></div>
   <canvas id="fireworks"></canvas>
 
+  <!-- 🧁 App Container -->
   <div id="app"></div>
 
+  <!-- 🧨 Scripts -->
   <script src="script.js"></script>
   <script src="fireworks.js"></script>
-  <audio id="gift-sound" src="gift-open.mp3" preload="auto"></audio>
-<!-- SoundCloud Player (initially hidden) -->
-<iframe 
-  id="music-player"
-  width="0" 
-  height="0" 
-  style="display: none;" 
-  allow="autoplay"
-  src="">
-</iframe>
-
-<script src="script.js"></script>
 </body>
 </html>
