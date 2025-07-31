@@ -24,7 +24,7 @@ const pages = [
     question: "Q2: Agar main superhero hota, to kaunsa hota?",
     options: [
       { text: "Fauji", value: 1 },
-      { text: "Aap hamesha se mera superhero ho", value: 2 },
+      { text: "Parizaad", value: 2 },
       { text: "Dramebaaz Man", value: 3 }
     ]
   },
@@ -42,10 +42,19 @@ const pages = [
     question: "Q4: Aapko mere mein sabse achhi baat kya lagti hai?",
     options: [
       { text: "Apko BEHNA Kahta Hon", value: 1 },
-      { text: "Mujhe hassata hoon", value: 2 },
+      { text: "Apko Hansaata hon", value: 2 },
       { text: "Dil ka saaf hoon ❤️", value: 3 }
     ]
   },
+  {
+  type: 'choice',
+  question: "Q5: In mein se best kya hota?",
+  options: [
+    { text: "Agar main aapka saga bhai hota", value: 1 },
+    { text: "Agar main aap se kabhi mila nahi hota", value: 2 },
+    { text: "Aisa hi jaisa ab hoon — non-blood brother ❤", value: 3 }
+  ]
+}
 
   {
     type: 'memories',
@@ -126,7 +135,13 @@ function nextPage() {
 }
 
 function mapToAlphabetCode(answers) {
-  const index = ((answers[0] - 1) * 27) + ((answers[1] - 1) * 9) + ((answers[2] - 1) * 3) + (answers[3] - 1);
+  const index = (
+    (answers[0] - 1) * 81 + // 3^4
+    (answers[1] - 1) * 27 + // 3^3
+    (answers[2] - 1) * 9 +  // 3^2
+    (answers[3] - 1) * 3 +  // 3^1
+    (answers[4] - 1)        // 3^0
+  );
   const codeList = generateCodeList();
   return codeList[index] || '??';
 }
