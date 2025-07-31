@@ -210,3 +210,12 @@ input[type="radio"] {
   object-fit: cover;
   display: block;
 }
+let musicStarted = false;
+function playMusicOnce() {
+  if (musicStarted) return;
+  musicStarted = true;
+
+  const iframe = document.getElementById('music');
+  iframe.contentWindow.postMessage({ method: 'play' }, '*');
+}
+document.addEventListener('click', playMusicOnce);
