@@ -192,9 +192,10 @@ function renderPage() {
           </p>
         </div>
 
-        <div style="margin: 30px auto; width: 100%; max-width: 640px;">
-          <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; border-radius: 15px;" />
-        </div>
+       <div class="video-style-photo">
+  <img src="final-sister.jpg" alt="Sister Photo" />
+</div>
+
 
         <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
         <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
