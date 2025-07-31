@@ -206,11 +206,18 @@ function renderPage() {
 
   // Add click listener to gift box
   const giftBox = document.getElementById('gift-box');
-  giftBox.addEventListener('click', () => {
-    document.getElementById('gift-scene').style.display = 'none';
-    document.getElementById('final-message').style.display = 'block';
-    document.getElementById('gift-sound').play();
-      });
+ giftBox.addEventListener('click', () => {
+  document.getElementById('gift-scene').style.display = 'none';
+  document.getElementById('final-message').style.display = 'block';
+
+  // Start music when gift is opened
+  const music = document.getElementById('music-player');
+  music.style.display = 'block';
+
+  // Reload the iframe to trigger autoplay
+  const src = music.getAttribute('src');
+  music.setAttribute('src', src + "&auto_play=true");
+});
     }
   }
 
