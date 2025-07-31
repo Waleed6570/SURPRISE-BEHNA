@@ -163,3 +163,33 @@ input[type="radio"] {
   margin-left: auto;
   margin-right: auto;
 }
+#gift-box {
+  width: 200px;
+  margin-top: 20px;
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #gift-box {
+    width: 140px;
+  }
+
+  .message-box {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  #final-message h1, #gift-scene h1 {
+    font-size: 1.5em;
+  }
+}
