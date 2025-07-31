@@ -174,52 +174,56 @@ function renderPage() {
       `).join('')}
       <button onclick="nextPage()">Next ➡</button>
     `;
-} else if (page.type === 'final') {
-  const code = mapToAlphabetCode(codeAnswers);
-  app.innerHTML = `
-    <div id="gift-scene">
-      <h1 style="font-size: 2em;">🎁 Tap to Open Your Surprise!</h1>
-      <img src="giftbox.png" alt="Gift Box" id="gift-box" />
-    </div>
-
-    <div id="final-message" style="display: none;">
-      <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
-      <div class="message-box">
-        <p>
-          Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
-          Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho.  
-          Aap ke baghair meri family adhoori hai.
-        </p>
+  } else if (page.type === 'final') {
+    const code = mapToAlphabetCode(codeAnswers);
+    app.innerHTML = `
+      <div id="gift-scene">
+        <h1 style="font-size: 2em;">🎁 Tap to Open Your Surprise!</h1>
+        <img src="giftbox.png" alt="Gift Box" id="gift-box" />
       </div>
 
-      <div style="margin: 30px auto; width: 100%; max-width: 640px;">
-        <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; border-radius: 15px;" />
+      <div id="final-message" style="display: none;">
+        <h1>🎉 Happy Sister Day, Aapko! 🎂</h1>
+        <div class="message-box">
+          <p>
+            Aap meri zindagi ki sabse khoobsurat gift hain. Main ne Allah se bohot mang kar aapko paaya hai.
+            Meri dua hai ke humesha aap mere saath rahain. Kabhi aap mujh se naraz na ho.  
+            Aap ke baghair meri family adhoori hai.
+          </p>
+        </div>
+
+        <div style="margin: 30px auto; width: 100%; max-width: 640px;">
+          <img src="final-sister.jpg" alt="Sister Photo" style="width: 100%; border-radius: 15px;" />
+        </div>
+
+        <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
+        <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
+        <p style="margin-top: 20px; font-size: 1.1em;">Secret Code: <strong>${code}</strong></p>
+        <br/>
+        <button onclick="restart()">Watch Again 🔁</button>
       </div>
+    `;
 
-      <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
-      <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
-      <p style="margin-top: 20px; font-size: 1.1em;">Secret Code: <strong>${code}</strong></p>
-      <br/>
-      <button onclick="restart()">Watch Again 🔁</button>
-    </div>
-  `;
+    const giftBox = document.getElementById('gift-box');
+    giftBox.addEventListener('click', () => {
+      document.getElementById('gift-scene').style.display = 'none';
+      document.getElementById('final-message').style.display = 'block';
 
-  // Add click listener to gift box
-  const giftBox = document.getElementById('gift-box');
- giftBox.addEventListener('click', () => {
-  document.getElementById('gift-scene').style.display = 'none';
-  document.getElementById('final-message').style.display = 'block';
+      // 🔇 Stop first music
+      const music = document.getElementById('music');
+      const musicSrc = music.getAttribute('src');
+      music.setAttribute('src', ''); // stop old music
+      setTimeout(() => {
+        music.setAttribute('src', musicSrc); // reset
+      }, 100);
 
-  // Start music when gift is opened
-  const music = document.getElementById('music-player');
-  music.style.display = 'block';
-
-  // Reload the iframe to trigger autoplay
-  const src = music.getAttribute('src');
-  music.setAttribute('src', src + "&auto_play=true");
-});
-    }
+      // ▶ Play gift music
+      const musicPlayer = document.getElementById('music-player');
+      const src = musicPlayer.getAttribute('src');
+      musicPlayer.setAttribute('src', src + '&auto_play=true');
+    });
   }
+}
 
 function restart() {
   currentPage = 0;
@@ -244,6 +248,7 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
+// 🎵 Start background music on any click
 let musicStarted = false;
 function playMusicOnce() {
   if (musicStarted) return;
