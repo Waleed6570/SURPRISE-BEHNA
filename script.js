@@ -55,7 +55,8 @@ const pages = [
     { text: "Aisa hi jaisa ab hoon — non-blood brother ❤", value: 3 }
   ]
 },
-  
+
+  {
     type: 'memories',
     content: `
       <h1>✨ Yaadein ✨</h1>
