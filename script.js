@@ -54,9 +54,8 @@ const pages = [
     { text: "Agar main aap se kabhi mila nahi hota", value: 2 },
     { text: "Aisa hi jaisa ab hoon — non-blood brother ❤", value: 3 }
   ]
-}
-
-  {
+},
+  
     type: 'memories',
     content: `
       <h1>✨ Yaadein ✨</h1>
