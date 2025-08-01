@@ -47,14 +47,14 @@ const pages = [
     ]
   },
   {
-  type: 'choice',
-  question: "Q5: In mein se best kya hota?",
-  options: [
-    { text: "Agar main aapka saga bhai hota", value: 1 },
-    { text: "Agar main aap se kabhi mila nahi hota", value: 2 },
-    { text: "Aisa hi jaisa ab hoon — non-blood brother ❤", value: 3 }
-  ]
-},
+    type: 'choice',
+    question: "Q5: In mein se best kya hota?",
+    options: [
+      { text: "Agar main aapka saga bhai hota", value: 1 },
+      { text: "Agar main aap se kabhi mila nahi hota", value: 2 },
+      { text: "Aisa hi jaisa ab hoon — non-blood brother ❤", value: 3 }
+    ]
+  },
 
   {
     type: 'memories',
@@ -153,10 +153,12 @@ function generateCodeList() {
     for (let j = 0; j < 3; j++) {
       for (let k = 0; k < 3; k++) {
         for (let l = 0; l < 3; l++) {
-          const idx = list.length;
-          const first = letters[Math.floor(idx / 26)];
-          const second = letters[idx % 26];
-          list.push(first + second);
+          for (let m = 0; m < 3; m++) {
+            const idx = list.length;
+            const first = letters[Math.floor(idx / 26)];
+            const second = letters[idx % 26];
+            list.push(first + second);
+          }
         }
       }
     }
@@ -207,10 +209,9 @@ function renderPage() {
           </p>
         </div>
 
-       <div class="video-style-photo">
-  <img src="final-sister.jpg" alt="Sister Photo" />
-</div>
-
+        <div class="video-style-photo">
+          <img src="final-sister.jpg" alt="Sister Photo" />
+        </div>
 
         <h2 style="margin-top: 30px;" class="glitter-text">LOVE YOU BEHNA ❤</h2>
         <p style="margin-top: 10px; font-weight: bold;">— Aapka chhota bhai 💖</p>
@@ -225,15 +226,15 @@ function renderPage() {
       document.getElementById('gift-scene').style.display = 'none';
       document.getElementById('final-message').style.display = 'block';
 
-      // 🔇 Stop first music
+      // Stop background music
       const music = document.getElementById('music');
       const musicSrc = music.getAttribute('src');
-      music.setAttribute('src', ''); // stop old music
+      music.setAttribute('src', ''); 
       setTimeout(() => {
-        music.setAttribute('src', musicSrc); // reset
+        music.setAttribute('src', musicSrc);
       }, 100);
 
-      // ▶ Play gift music
+      // Start gift music
       const musicPlayer = document.getElementById('music-player');
       const src = musicPlayer.getAttribute('src');
       musicPlayer.setAttribute('src', src + '&auto_play=true');
@@ -264,7 +265,7 @@ window.onload = () => {
   setInterval(createFallingEmoji, 300);
 };
 
-// 🎵 Start background music on any click
+// Auto-play first music on first click
 let musicStarted = false;
 function playMusicOnce() {
   if (musicStarted) return;
